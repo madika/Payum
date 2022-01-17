@@ -156,7 +156,8 @@ class CoreGatewayFactory implements GatewayFactoryInterface
                 return new Environment(new ChainLoader());
             },
             'twig.register_paths' => function (ArrayObject $config) {
-                $twig = $config['twig.env'];
+                $twig = new Environment(new ChainLoader());
+                $config['twig.env'] = $twig;
                 if (false == $twig instanceof Environment) {
                     throw new \LogicException(sprintf(
                         'The `twig.env config option must contains instance of Twig\Environment but got %s`',
