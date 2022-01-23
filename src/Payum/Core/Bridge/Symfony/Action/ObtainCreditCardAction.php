@@ -81,7 +81,7 @@ class ObtainCreditCardAction implements ActionInterface, GatewayAwareInterface
         if ($this->httpRequest instanceof Request) {
             $httpRequest = $this->httpRequest;
         } elseif ($this->httpRequestStack instanceof RequestStack) {
-            $httpRequest = $this->httpRequestStack->getMasterRequest();
+            $httpRequest = $this->httpRequestStack->getMainRequest();
         }
 
         if (false == $httpRequest) {
